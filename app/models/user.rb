@@ -9,6 +9,11 @@ class User < ApplicationRecord
 
   has_many :questions
 
+  # конечно нет смысла даункейсить строку пока не проверили на наличие символов в ней
+  # но поставить проверку мужду "presence" и "uniqueness" тоже не понятно как
+  # если только выносить что то одно, но ,так понял, из валидации их вытаскивать нельзя
+  before_validation :username_to_downcase
+
   validates :email, :username, presence: true
   validates :email, :username, uniqueness: true
   # нашел такое стандартное решение
@@ -17,7 +22,7 @@ class User < ApplicationRecord
 
   validates :username, length: { maximum: 40,
                                  message: "User name maximum length is 40 characters." }
-  validates :username, format: { with: /\A[a-zA-Z0-9_]*\z /,
+  validates :username, format: { with: /\A[a-zA-Z0-9_]*\z/,
                                     message: "A-Z, a-z, 0-9, _ characters only available." }
 
   attr_accessor :password
@@ -26,6 +31,8 @@ class User < ApplicationRecord
   validates_confirmation_of :password
 
   before_save :encrypt_password
+
+  private
 
   def encrypt_password
     if self.password.present?
@@ -49,5 +56,9 @@ class User < ApplicationRecord
     else
       nil
     end
+  end
+
+  def username_to_downcase
+    self.username.downcase!
   end
 end
