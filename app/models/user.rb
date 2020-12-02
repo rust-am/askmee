@@ -59,6 +59,6 @@ class User < ApplicationRecord
   end
 
   def username_to_downcase
-    self.username.downcase!
+    self.username = self.username.downcase unless username.nil?
   end
 end
