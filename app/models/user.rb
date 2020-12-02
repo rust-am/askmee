@@ -1,9 +1,7 @@
 require 'openssl'
 require 'uri'
 
-
 class User < ApplicationRecord
-
   ITERATIONS = 20000
   DIGEST = OpenSSL::Digest::SHA256.new
 
@@ -17,18 +15,20 @@ class User < ApplicationRecord
   validates :email, :username, presence: true
   validates :email, :username, uniqueness: true
   # нашел такое стандартное решение
-  validates :email, format: { with: URI::MailTo::EMAIL_REGEXP,
-                              message: "Email not valid."}
+  validates :email, format: {with: URI::MailTo::EMAIL_REGEXP}
 
-  validates :username, length: { maximum: 40,
-                                 message: "User name maximum length is 40 characters." }
-  validates :username, format: { with: /\A[a-zA-Z0-9_]*\z/,
-                                    message: "A-Z, a-z, 0-9, _ characters only available." }
+  validates :username, length: {maximum: 40}
+  validates :username, format: {with: /\A[a-zA-Z0-9_]*\z/,
+                                message: "A-Z, a-z, 0-9, _ characters only available."}
 
   attr_accessor :password
 
-  validates_presence_of :password, on: :create
-  validates_confirmation_of :password
+  validates :password, presence:true, on: :create
+  # устаревший способ
+  # validates_presence_of :password, on: :create
+  validates :password, confirmation: true
+  # устаревший способ
+  # validates_confirmation_of :password
 
   before_save :encrypt_password
 
