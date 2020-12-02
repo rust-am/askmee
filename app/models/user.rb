@@ -7,9 +7,6 @@ class User < ApplicationRecord
 
   has_many :questions
 
-  # конечно нет смысла даункейсить строку пока не проверили на наличие символов в ней
-  # но поставить проверку мужду "presence" и "uniqueness" тоже не понятно как
-  # если только выносить что то одно, но ,так понял, из валидации их вытаскивать нельзя
   before_validation :username_to_downcase
 
   validates :email, :username, presence: true
@@ -59,6 +56,6 @@ class User < ApplicationRecord
   end
 
   def username_to_downcase
-    self.username = self.username.downcase unless username.nil?
+    username.downcase! if username.present?
   end
 end
