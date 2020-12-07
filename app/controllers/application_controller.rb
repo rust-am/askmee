@@ -13,4 +13,6 @@ class ApplicationController < ActionController::Base
   def reject_user
     redirect_to root_path, alert: 'Сюда нельзя.'
   end
+
+
 end
