@@ -7,7 +7,7 @@ class User < ApplicationRecord
 
   has_many :questions
 
-  before_validation :downcase_username, downcase_email
+  before_validation :downcase_username, :downcase_email
 
   validates :email, :username, presence: true, uniqueness: true, format: {with: URI::MailTo::EMAIL_REGEXP}
 
@@ -20,7 +20,7 @@ class User < ApplicationRecord
   # устаревший способ
   # validates_presence_of :password, on: :create
   # validates_confirmation_of :password
-  
+
   before_save :encrypt_password
 
   private
