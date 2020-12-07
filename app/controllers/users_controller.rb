@@ -1,34 +1,61 @@
 class UsersController < ApplicationController
+
+  before_action :load_user, except: [:index, :new, :create]
+
+  before_action :authorize_user, except: [:index, :new, :create, :show]
+
+  def show
+    # @user = User.find params[:id]
+    @questions = @user.questions.order(created_at: :desc)
+
+    @new_question = @user.questions.build
+  end
+
   def index
-    @users = [
-      User.new(
-        id: 1,
-        name: 'Vadim',
-        username: 'installero',
-        avatar_url: 'https://secure.gravatar.com/avatar/' \
-          '71269686e0f757ddb4f73614f43ae445?s=100'
-      ),
-      User.new(id: 2, name: 'Misha', username: 'aristofun')
-    ]
+    @users = User.all
   end
 
   def new
+    redirect_to root_url, alert: 'Вы уж залогинены!' if current_user.present?
+
+    @user = User.new
+  end
+
+  def create
+    redirect_to root_url, alert: 'Вы уж залогинены!' if current_user.present?
+
+    @user = User.new(user_params)
+
+    if @user.save
+      redirect_to root_url, notice: 'Регистрация прошла успешно.'
+    else
+      render 'new'
+    end
   end
 
   def edit
+    # @user = User.find params[:id]
   end
 
-  def show
-    @user = User.new(
-      name: 'Rus',
-      username: 'rus',
-      avatar_url: 'https://u.kanobu.ru/articles/pics/7e6dc974-43f4-4ad0-9a55-2465566e9662.jpg'
-    )
+  def update
+    # @user = User.find params[:id]
+    if @user.update(user_params)
+      redirect_to user_path(@user), notice: 'Данные изменены.'
+    else
+      render 'edit'
+    end
+  end
 
-    @questions = [
-      Question.new(text: 'How are you?', created_at: Date.parse('27.03.2016'))
-    ]
+  private
+  def authorize_user
+    reject_user unless @user == current_user
+  end
 
-    @new_question = Question.new
+  def load_user
+    @user ||= User.find params[:id]
+  end
+
+  def user_params
+    params.require(:user).permit(:email, :password, :password_confirmation, :name, :username, :avatar_url)
   end
 end
