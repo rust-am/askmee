@@ -2,7 +2,7 @@
 <%# страницы пользователя, которая будет показана по адресу /users/1 %>
 
 <%# Блок с информацией о пользователей %>
-<div class="user-header text-center">
+<div class="user-header text-center" style="background: <%= @user.profile_color %>">
   <h1 class="title-medium">
     <%# Выводим имя пользователя %>
     <%= @user.name %>
@@ -15,7 +15,7 @@
   <div class="user-image-div">
     <%# Рисуем аватарку пользователя. Мы используем хелперы image_tag, %>
     <%# встроенный в rails, и наш user_avatar %>
-    <%= image_tag user_avatar(@user), class: 'user-image', alt: '[Фото]' %>
+    <%= image_tag user_avatar(@user), class: 'user-image', alt: 'User picture' %>
   </div>
 
   <h2 class="title-small buffer-both">

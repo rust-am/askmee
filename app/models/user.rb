@@ -10,12 +10,13 @@ class User < ApplicationRecord
   before_validation :downcase_username, :downcase_email
 
   validates :email, presence: true, uniqueness: true, format: {with: URI::MailTo::EMAIL_REGEXP}
+  validates :username, presence: true, uniqueness: true, length: {maximum: 40},
+            format: {with: /\A[a-zA-Z0-9_]*\z/, message: "A-Z, a-z, 0-9, _ characters only available."}
+  validates :password, confirmation: true, presence: true, on: :create
+  validates :profile_color, format: {with: /\A#([a-fA-F0-9]{6}|[a-fA-F0-9]{3})\z/}
 
-  validates :username, presence: true, uniqueness: true, length: {maximum: 40}, format: {with: /\A[a-zA-Z0-9_]*\z/,
-                                                                                         message: "A-Z, a-z, 0-9, _ characters only available."}
   attr_accessor :password
 
-  validates :password, confirmation: true, presence: true, on: :create
 
   before_save :encrypt_password
 
