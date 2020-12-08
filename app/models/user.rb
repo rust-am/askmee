@@ -5,7 +5,8 @@ class User < ApplicationRecord
   ITERATIONS = 20000
   DIGEST = OpenSSL::Digest::SHA256.new
 
-  has_many :questions
+  # нагуглил такое решение, обнуление
+  has_many :questions, dependent: :delete_all
 
   before_validation :downcase_username, :downcase_email
 
@@ -16,7 +17,6 @@ class User < ApplicationRecord
   validates :profile_color, format: {with: /\A#([a-fA-F0-9]{6}|[a-fA-F0-9]{3})\z/}
 
   attr_accessor :password
-
 
   before_save :encrypt_password
 
