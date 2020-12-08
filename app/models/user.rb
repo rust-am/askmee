@@ -17,9 +17,6 @@ class User < ApplicationRecord
   attr_accessor :password
 
   validates :password, confirmation: true, presence: true, on: :create
-  # устаревший способ
-  # validates_presence_of :password, on: :create
-  # validates_confirmation_of :password
 
   before_save :encrypt_password
 
