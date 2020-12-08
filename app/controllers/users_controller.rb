@@ -50,6 +50,11 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    @user.destroy
+    redirect_to root_path, alert: 'Пользователь удален!'
+  end
+
   private
   def authorize_user
     reject_user unless @user == current_user
