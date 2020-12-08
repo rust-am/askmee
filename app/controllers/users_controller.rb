@@ -9,6 +9,10 @@ class UsersController < ApplicationController
     @questions = @user.questions.order(created_at: :desc)
 
     @new_question = @user.questions.build
+
+    @questions_count = @questions.count
+    @answers_count = @questions.where.not(answer: nil).count
+    @unanswered_count = @questions_count - @answers_count
   end
 
   def index
@@ -29,7 +33,7 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to root_url, notice: 'Регистрация прошла успешно.'
     else
-      render 'new'
+      render :edit
     end
   end
 
