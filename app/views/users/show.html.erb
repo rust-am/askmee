@@ -58,7 +58,7 @@
 
 <!--блок с количеством вопросов-->
 <div class="user-questions ">
-  Всего <%= @questions.count %> <%= inclination(@questions.count, %w(Вопрос Вопроса Вопросов))%>
+  Всего <%= @questions.count %> <%= inclination(@questions.count, 'Вопрос', 'Вопроса', 'Вопросов')%>
 </div>
 
 <%# Блок со списком вопросов к пользователю %>
