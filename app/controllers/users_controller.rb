@@ -1,7 +1,5 @@
 class UsersController < ApplicationController
-
   before_action :load_user, except: [:index, :new, :create]
-
   before_action :authorize_user, except: [:index, :new, :create, :show]
 
   def show
@@ -58,6 +56,7 @@ class UsersController < ApplicationController
   end
 
   private
+
   def authorize_user
     reject_user unless @user == current_user
   end
