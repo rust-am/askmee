@@ -1,9 +1,8 @@
 class UsersController < ApplicationController
-  before_action :load_user, except: [:index, :new, :create]
-  before_action :authorize_user, except: [:index, :new, :create, :show]
+  before_action :load_user, except: %i[index new create]
+  before_action :authorize_user, except: %i[index new create show]
 
   def show
-    # @user = User.find params[:id]
     @questions = @user.questions.order(created_at: :desc)
 
     @new_question = @user.questions.build
@@ -18,31 +17,29 @@ class UsersController < ApplicationController
   end
 
   def new
-    redirect_to root_url, alert: 'Вы уже залогинены!' if current_user.present?
+    redirect_to root_path, alert: 'Вы уже залогинены!' if current_user.present?
 
     @user = User.new
   end
 
   def create
-    redirect_to root_url, alert: 'Вы уже залогинены!' if current_user.present?
+    redirect_to root_path, alert: 'Вы уже залогинены!' if current_user.present?
 
     @user = User.new(user_params)
 
     if @user.save
       session[:user_id] = @user.id
 
-      redirect_to root_url, notice: 'Регистрация прошла успешно.'
+      redirect_to root_path, notice: 'Регистрация прошла успешно.'
     else
       render :new
     end
   end
 
   def edit
-    # @user = User.find params[:id]
   end
 
   def update
-    # @user = User.find params[:id]
     if @user.update(user_params)
       redirect_to user_path(@user), notice: 'Данные изменены.'
     else
@@ -62,7 +59,7 @@ class UsersController < ApplicationController
   end
 
   def load_user
-    @user ||= User.find params[:id]
+    @user ||= User.find(params[:id])
   end
 
   def user_params
