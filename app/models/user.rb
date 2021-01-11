@@ -5,10 +5,9 @@ class User < ApplicationRecord
   ITERATIONS = 20000
   DIGEST = OpenSSL::Digest::SHA256.new
   USERNAME_REGEX = /\A\w+\z/
-  COLOR_REGEX = /\A#(\h{3}){1,2}\z/
+  COLOR_REGEX = /\A#\h{3}{1,2}\z/
 
   attr_accessor :password
-
   # нагуглил такое решение, удаление связанных таблиц без вызова коллбэка
   has_many :questions, dependent: :delete_all
 
@@ -21,13 +20,12 @@ class User < ApplicationRecord
 
   before_save :encrypt_password
 
-  private
-
   def self.hash_to_string(password_hash)
     password_hash.unpack('H*')[0]
   end
 
   def self.authenticate(email, password)
+    email = email.downcase if email.present?
     user = find_by(email: email)
 
     if user.present? && user.password_hash == User.hash_to_string(OpenSSL::PKCS5.pbkdf2_hmac(password, user.password_salt, ITERATIONS, DIGEST.length, DIGEST))
@@ -36,6 +34,8 @@ class User < ApplicationRecord
       nil
     end
   end
+
+  private
 
   def encrypt_password
     if self.password.present?
