@@ -41,3 +41,9 @@
 .question-actions a {
   margin-left: 10px;
 }
+
+.question-author {
+  font-family: "Trebuchet MS", "Open Sans", sans-serif;
+  color: #005a55;
+  font-size: 14px;
+}
