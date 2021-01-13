@@ -8,24 +8,22 @@ class User < ApplicationRecord
   COLOR_REGEX = /\A#\h{3}{1,2}\z/
 
   attr_accessor :password
-  # нагуглил такое решение, удаление связанных таблиц без вызова коллбэка
-  has_many :questions, dependent: :delete_all
 
+  has_many :questions, dependent: :destroy
   before_validation :downcase_username, :downcase_email
+  before_save :encrypt_password
 
   validates :email, presence: true, uniqueness: true, format: {with: URI::MailTo::EMAIL_REGEXP}
   validates :username, presence: true, uniqueness: true, length: {maximum: 40}, format: {with: USERNAME_REGEX}
   validates :password, confirmation: true, presence: true, on: :create
   validates :profile_color, format: {with: COLOR_REGEX}
 
-  before_save :encrypt_password
-
   def self.hash_to_string(password_hash)
     password_hash.unpack('H*')[0]
   end
 
   def self.authenticate(email, password)
-    email = email.downcase if email.present?
+    email&.downcase!
     user = find_by(email: email)
 
     if user.present? && user.password_hash == User.hash_to_string(OpenSSL::PKCS5.pbkdf2_hmac(password, user.password_salt, ITERATIONS, DIGEST.length, DIGEST))
