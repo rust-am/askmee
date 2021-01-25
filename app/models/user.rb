@@ -46,10 +46,10 @@ class User < ApplicationRecord
   end
 
   def downcase_username
-    self.username = username.downcase if username.present?
+    username&.downcase!
   end
 
   def downcase_email
-    self.email = email.downcase if email.present?
+    email&.downcase!
   end
 end
