@@ -7,6 +7,7 @@ ruby '2.7.1'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.4'
 
 gem 'rails_12factor'
+
 # compilation JS files
 gem 'uglifier'
 # Use Puma as the app server
@@ -21,6 +22,8 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.7'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
+
+gem 'recaptcha', require: 'recaptcha/rails'
 
 group :production do
   #postgres db
