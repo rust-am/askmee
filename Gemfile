@@ -8,6 +8,7 @@ gem 'rails', '~> 6.0.3', '>= 6.0.3.4'
 
 gem 'rails_12factor'
 
+gem 'ffaker'
 # compilation JS files
 gem 'uglifier'
 # Use Puma as the app server
