@@ -18,4 +18,12 @@
       </div>
     </div>
   <% end %>
+
+  <div class="buffer-both">
+    <% @hashtags.each do |ht| %>
+      <span>
+        <%= link_to "##{ht.text}", hashtag_path(ht.text) %>
+      </span>
+    <% end %>
+  </div>
 </div>
