@@ -5,4 +5,18 @@ class Question < ApplicationRecord
   belongs_to :author, class_name: 'User', optional: true
 
   validates :text, presence: true, length: {maximum: 255}
+
+  # after_commit :create_hashtags, on %i[create update]
+  after_save_commit :create_hashtags
+
+  private
+
+  def create_hashtags
+    self.hashtags =
+      "#{text} #{answer}".
+        downcase.
+        scan(Hashtag::REGEXP).
+        uniq.
+        map { |ht| Hashtag.find_or_create_by(text: ht.detele('#')) }
+  end
 end
