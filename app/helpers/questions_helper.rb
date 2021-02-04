@@ -12,4 +12,10 @@ module QuestionsHelper
     # форма множественного числа для всех остальных случаев
     return slonov
   end
+
+  def text_with_hashtag_link(text)
+    text.gsub(Hashtag::REGEXP) do |ht|
+      link_to ht, hashtag_path(ht.delete('#').downcase)
+    end.html_safe
+  end
 end
