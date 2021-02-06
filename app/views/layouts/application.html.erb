@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="UTF-8"/>
-  <title>Askmeeeee</title>
+  <title><%= I18n.t('views.layouts.good_answers') %></title>
   <link rel="stylesheet"
         href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
   <%= csrf_meta_tags %>
@@ -16,7 +16,7 @@
 <div class="header">
   <div class="container">
     <div class="header-logo">
-      <h1 class="header-title"><%= link_to "Good answers", root_path %></h1>
+      <h1 class="header-title"><%= link_to I18n.t('views.layouts.good_answers'), root_path %></h1>
     </div>
 
     <%# Выводим в хэдере информацию для логина/авторизации/регистрации %>
@@ -25,11 +25,11 @@
       <% if current_user %>
         <%# Даем ссылки на его профиль и на логаут %>
         <%= link_to "@#{current_user.username}", user_path(current_user) %> |
-        <%= link_to 'Выйти', session_path, data: {method: :delete} %>
+        <%= link_to I18n.t('views.layouts.log_out'), session_path, data: {method: :delete} %>
       <% else %>
         <%# Если нету — ссылки на регистрацию и логин %>
-        <%= link_to 'Зарегистрироваться', new_user_path, class: 'button button-light button-small' %>
-        <%= link_to 'Войти', new_session_path, class: 'button button-light button-small' %>
+        <%= link_to I18n.t('views.layouts.sing_up'), new_user_path, class: 'button button-light button-small' %>
+        <%= link_to I18n.t('views.layouts.log_in'), new_session_path, class: 'button button-light button-small' %>
       <% end %>
     </div>
   </div>
@@ -52,4 +52,3 @@
 </div>
 </body>
 </html>
-

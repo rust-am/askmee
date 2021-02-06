@@ -18,20 +18,20 @@ class UsersController < ApplicationController
   end
 
   def new
-    redirect_to root_path, alert: 'Вы уже залогинены!' if current_user.present?
+    redirect_to root_path, alert: I18n.t('controllers.users.logged_in') if current_user.present?
 
     @user = User.new
   end
 
   def create
-    redirect_to root_path, alert: 'Вы уже залогинены!' if current_user.present?
+    redirect_to root_path, alert: I18n.t('controllers.users.logged_in') if current_user.present?
 
     @user = User.new(user_params)
 
     if @user.save
       session[:user_id] = @user.id
 
-      redirect_to root_path, notice: 'Регистрация прошла успешно.'
+      redirect_to root_path, notice: I18n.t('controllers.users.new')
     else
       render :new
     end
@@ -42,7 +42,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      redirect_to user_path(@user), notice: 'Данные изменены.'
+      redirect_to user_path(@user), notice: I18n.t('controllers.users.updated')
     else
       render 'edit'
     end
@@ -50,7 +50,7 @@ class UsersController < ApplicationController
 
   def destroy
     @user.destroy
-    redirect_to root_path, alert: 'Пользователь удален!'
+    redirect_to root_path, alert: I18n.t('controllers.users.deleted')
   end
 
   private

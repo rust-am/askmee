@@ -16,14 +16,14 @@
     <%= f.hidden_field :user_id %>
 
     <div class="form-field">
-      <%= f.label :text, 'Вопрос', class: 'form-label' %>
+      <%= f.label :text, I18n.t('activerecord.attributes.question.text'), class: 'form-label' %>
       <%= f.text_area :text, class: 'form-textarea' %>
     </div>
 
     <%# Простая авторизация - может ли текущий юзер править вопрос? %>
     <% if current_user.present? && current_user == @question.user %>
       <div class="form-field">
-        <%= f.label :answer, 'Ответ', class: 'form-label' %>
+        <%= f.label :answer, I18n.t('views.questions.answer'), class: 'form-label' %>
         <%= f.text_area :answer, class: 'form-textarea' %>
       </div>
     <% end %>
@@ -31,9 +31,9 @@
     <%= recaptcha_tags unless current_user.present? %>
 
     <div class="form-action buffer-both">
-      <%= f.submit 'Сохранить', class: 'button button-dark button-small' %>
+      <%= f.submit I18n.t('views.questions.save'), class: 'button button-dark button-small' %>
       или
-      <%= link_to "вернуться", user_path(@question.user) %>
+      <%= link_to I18n.t('views.questions.back'), user_path(@question.user) %>
     </div>
   <% end %>
 </div>

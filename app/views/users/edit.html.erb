@@ -1,6 +1,8 @@
 <%# Страница редактирования пользователя %>
 <div class="container content-wrapper buffer-both">
-  <h1 class="title-medium">Править профиль</h1>
+  <h3 class="title-medium">
+    <%= I18n.t('views.users.edit_profile') %>
+  </h3>
 
   <div class="column-1-2">
     <%# С помощью специального хелпера form_for мы делаем тег <form ...> %>
@@ -29,22 +31,22 @@
 
       <%# Поступаем аналогично для других полей %>
       <div class="form-field">
-        <%= f.label 'Ваше имя', class: 'form-label' %>
+        <%= f.label I18n.t('views.users.name'), class: 'form-label' %>
         <%= f.text_field :name, class: 'form-text-field' %>
       </div>
 
       <div class="form-field">
-        <%= f.label 'Цвет фона профиля', class: 'form-label' %>
+        <%= f.label I18n.t('views.users.background_color'), class: 'form-label' %>
         <%= f.color_field :profile_color, class: 'form-text-field' %>
       </div>
 
       <div class="form-field">
-        <%= f.label 'URL вашей аватарки', class: 'form-label' %>
+        <%= f.label I18n.t('views.users.avatar_url'), class: 'form-label' %>
         <%= f.text_field :avatar_url, class: 'form-text-field' %>
       </div>
 
       <div class="buffer-top-large buffer-bottom">
-        Если не хотите менять пароль — оставьте эти поля пустыми!
+        <%= I18n.t('views.users.recomendation') %>
       </div>
 
       <div class="form-field">
@@ -58,11 +60,11 @@
       </div>
 
       <div class="form-action buffer-top">
-        <%= f.submit 'Сохранить', class: 'button button-dark button-small' %>
+        <%= f.submit I18n.t('views.users.save'), class: 'button button-dark button-small' %>
       </div>
 
       <div class="button button-small button-red buffer-both">
-        <%= link_to 'Удалить профиль', @user, method: :delete, data: {confirm: 'Точно удалить профиль?'} %>
+        <%= link_to I18n.t('views.users.delete_profile'), @user, method: :delete, data: {confirm: I18n.t('views.users.delete_confirm')} %>
       </div>
     <% end %>
 

@@ -16,15 +16,14 @@
       </div>
     <% end %>
 
-    <% if question.author.present? %>
-      <div class="question-author">
-        Вопрос от: <%= link_to "@#{question.author.username}", user_path(question.author_id) %>
-      </div>
-    <% else %>
-      <div class="question-author">
-        Вопрос от: Анонима
-      </div>
-    <% end %>
+    <div class="question-author">
+      <%= I18n.t('views.questions.from') %>
+      <% if question.author.present? %>
+        <%= link_to "@#{question.author.username}", user_path(question.author_id) %>
+      <% else %>
+        <%= I18n.t('views.questions.anonymous') %>
+      <% end %>
+    </div>
 
     <%# Дата создания вопроса (отформатированная) %>
     <div class="question-date">
@@ -42,7 +41,7 @@
     <div class="question-actions">
       <%= link_to fa_icon(edit_icon), edit_question_path(question) %>
       <%= link_to fa_icon('trash-o'), question_path(question),
-                  method: :delete, data: {confirm: 'Точно удалить вопрос?'} %>
+                  method: :delete, data: {confirm: I18n.t('views.questions.delete_confirm')} %>
     </div>
   <% end %>
 </div>

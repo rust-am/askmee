@@ -5,9 +5,12 @@ ruby '2.7.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.4'
-
+# для логов на хероку
 gem 'rails_12factor'
-
+# локали
+# gem 'i18n'
+gem 'rails-i18n'
+# для генерации сидов в базу
 gem 'ffaker'
 # compilation JS files
 gem 'uglifier'
@@ -25,9 +28,11 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.2', require: false
 
 group :development do
+  #
   gem 'dotenv-rails'
 end
 
+# рекаптча v2 от гугла
 gem 'recaptcha', require: 'recaptcha/rails'
 
 group :production do

@@ -1,0 +1,174 @@
+ru:
+  # Перевод моделей
+  activerecord:
+    # Перевод названия моделей
+    models:
+      hashtag: 'Хэштег'
+      hashtag_question: 'Хэштег вопроса'
+      question: 'Вопрос'
+      user: 'Пользователь'
+    # Перевод названий аттрибутов моделей
+    attributes:
+      hashtag:
+        text: 'ХэшТег'
+      question:
+        text: 'Вопрос'
+        answer: 'Ответ'
+      user:
+        email: 'Емэйл'
+        username: 'Имя пользователя'
+        password: 'Пароль'
+        profile_color: 'Цвет профиля'
+        question: 'Вопрос'
+
+#    # ошибки
+#    errors:
+#      models:
+#        subscription:
+#          attributes:
+#            user_email:
+#              already_taken: 'Введенная почта используется, войдите для подписки на событие'
+#              self_subscription_prohibited: 'На свое событие подписываться нельзя, да и смысл'
+
+  # Перевод сообщений, которые отправляет контроллер
+  controllers:
+    users:
+      new: 'Регистрация прошла успешно'
+      logged_in: 'Вы уже залогинены!'
+      updated: 'Данные изменены'
+      deleted: 'Пользователь удален!'
+    session:
+      created: 'Вы успешно залогинелись.'
+      error: 'Неправильный мэйл или пароль.'
+      log_out: 'Вы разлогинились!'
+    question:
+      created: 'Вопрос был создан'
+      updated: 'Вопрос был обновлен'
+      destroyed: 'Вопрос был удален'
+    other:
+      error: 'Сюда нельзя.'
+
+  views:
+    layouts:
+      good_answers: 'Хорошие ответы'
+      sing_up: 'Регистрация'
+      log_in: 'Войти'
+      log_out: 'Выйти'
+    questions:
+      text: 'Вопрос'
+      answer: 'Ответ'
+      save: 'Сохранить'
+      back: 'вернуться'
+      delete_confirm: 'Вы уверены, что хотите удалить вопрос?'
+      from: 'Вопрос от: '
+      anonymous: 'Анонима'
+    sessions:
+      authorization: 'Войти на сайт'
+      user_name: 'Логин (email)'
+      password: 'Пароль'
+      log_in: 'Войти'
+    users:
+      edit_profile: 'Править профиль'
+      background_color: 'Цвет фона профиля'
+      avatar_url: 'URL вашей аватарки'
+      recomendation: 'Если не хотите менять пароль — оставьте эти поля пустыми!'
+      save: 'Сохранить'
+      delete_profile: 'Удалить профиль'
+      delete_confirm: 'Точно удалить профиль?'
+      our_users: 'Наши пользователи'
+      join_us: 'Присоединяйся к нам!'
+      update_profile: 'Редактировать профиль'
+      user_avatar: 'Фото пользователя'
+      ask_me: 'Спроси меня'
+      question_for: 'Ваш вопрос для:'
+      ask_a_question: 'Задать вопрос'
+      email: 'Логин (email)'
+      username: 'Имя пользователя'
+      name: 'Имя'
+      password: 'Пароль'
+      pass_confirmation: 'Пароль ещё раз'
+      register: 'Зарегистрироваться'
+
+#  subscriptions:
+#    subscription:
+#      destroy_confirm: 'Вы уверены, что хотите удалить эту подписку?'
+#
+#  photos:
+#    photo:
+#      destroy_confirm: 'Вы уверены, что хотите удалить фото?'
+#
+#  event_mailer:
+#    comment:
+#      title: 'Новый комментарий'
+#      author: 'Автор'
+#      event: 'Событие'
+#      datetime: 'Состоится'
+#      owner: 'Организатор'
+#    subscription:
+#      title: 'Новая подписка'
+#      name: 'Имя'
+#      email: 'Email'
+#      author: 'Автор'
+#      event: 'Событие'
+#      datetime: 'Состоится'
+#      owner: 'Организатор'
+#
+#  # Перевод названия приложения и компании-разработчика
+#  app:
+#    name: 'Барбекю'
+#    company: 'Хороший программист'
+#    developer: 'Шайдуллов Рустам'
+#
+#    # для навбара
+#    nav_bar:
+#      log_in: 'Войти'
+#      sing_up: 'Регистрация'
+#      profile: 'Профиль'
+#      log_out: 'Выйти'
+#
+#    event:
+#      head: 'События'
+#      create: 'Создать событие'
+#      new: 'Новое событие'
+#      edit: 'Редактировать'
+#      delete: 'Удалить'
+#
+#      errors:
+#        few: 'В вашей форме %{count} ошибки:'
+#        many: 'В вашей форме %{count} ошибок:'
+#        one: 'В вашей форме %{count} ошибка:'
+#        other: 'В вашей форме %{count} ошибки:'
+#
+#    button:
+#      log_in: 'Войти'
+#      sing_up: 'Регистрация'
+#      forgot_your_password: 'Забыли пароль?'
+#      no_confirmation: 'Не получили инструкции по подтверждению?'
+#      no_unlock_instructions: 'Не получили инструкции по разблокировке?'
+#      sign_in_with: 'Войти через'
+#      send_reset_instructions: 'Отправьте мне инструкции по сбросу пароля'
+#      cancel_my_account: 'Удалить мою учетную запись'
+#      edit_password: 'Изменить пароль'
+#      save: 'Сохранить'
+#      edit: 'Изменить'
+#      back: 'вернуться'
+#      change_password: 'Сменить пароль'
+#      change_my_password: 'Изменить мой пароль'
+#      edit_profile: 'Редактировать профиль'
+#
+#    field:
+#      new_password: 'Новый пароль'
+#      confirm_new_password: 'Подтвердите новый пароль'
+#      password_length:
+#        one: "%{count} символ минимум"
+#        few: "%{count} символа минимум"
+#        many: "%{count} символов минимум"
+#      are_you_sure: 'Вы уверены?'
+#      waiting_confirmation: 'В настоящее время ожидается подтверждения для: '
+#      leave_blank: 'оставьте поле пустым, если не хотите его менять'
+#      profile_editing: 'Редактирование профиля'
+#      need_current_password: 'нам нужен ваш текущий пароль для подтверждения изменений'
+#      added: 'Добавил'
+#
+#    # вывод текста если пользователь еще не организовал событий
+#    no_events: 'Пользователь пока не организовал ни одного события'
