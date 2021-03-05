@@ -1,24 +1,36 @@
-# README
+# Приложение 'Askmee'
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Приложение клон ask.fm, которое позволяет задавать вопросы пользователям, и собственно на них отвечать.
 
-Things you may want to cover:
+Данное приложение реализовано на языке Ruby 2.7.1 и Rails 6.0.3.4
 
-* Ruby version
+### Запуск
 
-* System dependencies
+1. Склонирует себе репозиторий:
 
-* Configuration
+```
+$ git clone git@github.com:rust-am/askmee.git
+```
 
-* Database creation
+Или просто скачайте и распакуйте в какую-нибудь папку.
 
-* Database initialization
+2. Установите гемы:
 
-* How to run the test suite
+```
+$ bundle
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+3. Создайте базу и прогоните миграции:
 
-* Deployment instructions
+```
+$ rails db:create
+$ rails db:migrate
+```
 
-* ...
+4. Запуск сервера:
+
+```
+$ bundle exec rails s
+```
+
+Так же рабочий вариант сайта можно посмотреть по ссылке [https://aaskmee.herokuapp.com](https://aaskmee.herokuapp.com).
