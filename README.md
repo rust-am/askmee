@@ -14,6 +14,20 @@ $ git clone git@github.com:rust-am/askmee.git
 
 Или просто скачайте и распакуйте в какую-нибудь папку.
 
+2. Создайте файл ```.env``` в корне проекта
+
+```
+$ cd askmee
+$ nano .env
+```
+
+Скопируйте содежимое:
+```
+RECAPTCHA_SITE_KEY = "site_key"
+RECAPTCHA_SECRET_KEY = "secret_key"
+```
+где ```site_key``` и ```secret_key``` ключи для [recaptcha v2](https://developers.google.com/recaptcha/docs/display), которые нужно самостоятельно получить и вписать в .env файл
+
 2. Установите гемы:
 
 ```
@@ -33,4 +47,4 @@ $ rails db:migrate
 $ bundle exec rails s
 ```
 
-Так же рабочий вариант сайта можно посмотреть по ссылке [https://aaskmee.herokuapp.com](https://aaskmee.herokuapp.com).
+Так же рабочий вариант сайта можно посмотреть по ссылке [https://aaskmee.herokuapp.com](https://aaskmee.herokuapp.com)
