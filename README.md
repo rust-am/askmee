@@ -28,20 +28,20 @@ RECAPTCHA_SECRET_KEY = "secret_key"
 ```
 где ```site_key``` и ```secret_key``` ключи для [recaptcha v2](https://developers.google.com/recaptcha/docs/display), которые нужно самостоятельно получить и вписать в .env файл
 
-2. Установите гемы:
+3. Установите гемы:
 
 ```
 $ bundle
 ```
 
-3. Создайте базу и прогоните миграции:
+4. Создайте базу и прогоните миграции:
 
 ```
 $ rails db:create
 $ rails db:migrate
 ```
 
-4. Запуск сервера:
+5. Запуск сервера:
 
 ```
 $ bundle exec rails s
